@@ -1,0 +1,8 @@
+server:
+    port: 5000
+spring:
+  application:
+    name: ${NAME}
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
