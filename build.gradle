@@ -2,10 +2,14 @@ plugins {
 	id 'org.springframework.boot' version '2.6.0'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id "com.palantir.docker" version "0.32.0"
+	id "com.palantir.docker-run" version "0.32.0"
 }
+
 
 group = 'com.co.microservicios'
 version = '1.1'
+
 sourceCompatibility = '1.8'
 
 repositories {
@@ -27,7 +31,19 @@ jar {
     }
  
 }
-
+/*
 test {
 	useJUnitPlatform()
+}
+*/
+docker {
+     name "microservicedemo:${project.version}"
+   
+}
+
+dockerRun {
+    name "microservicedemo"
+    image "microservicedemo:${project.version}"
+    ports '8089:8080'
+    clean true
 }
